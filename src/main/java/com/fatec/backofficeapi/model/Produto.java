@@ -2,84 +2,86 @@ package com.fatec.backofficeapi.model;
 
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-@Entity(name="Produto")
-@Table(name="produto")
+@Entity(name = "Produto")
+@Table(name = "produto")
 public class Produto {
-	
-	@Id
-	@Column(name="codigo")
-	private long codigo;
-	@OneToMany
-	private List<TipoProduto> tipoProduto;
-	
-	@Column(name="nome")
-	private String nome;
-	
-	@Column(name="valor")
-	private double valor;
-	
-	@Column(name="descricao")
-	private String descricao;
-	
-	@Column(name="quantidadeEstoque")
-	private int quantidadeEstoque;
-	
-	public Produto() {
-		
-	}
 
-	public long getCodigo() {
-		return codigo;
-	}
+    @Id
+    @NotNull
+    @Column(name = "codigoProduto")
+    private long codigoProduto;
+    @NotNull
+    @ManyToOne
+    private TipoProduto tipoProduto;
 
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
-	}
+    @NotNull
+    @Column(name = "nome")
+    private String nome;
 
-	public List<TipoProduto> getTipoProduto() {
-		return tipoProduto;
-	}
+    @Column(name = "valor")
+    private double valor;
 
-	public void setTipoProduto(List<TipoProduto> tipoProduto) {
-		this.tipoProduto = tipoProduto;
-	}
+    @NotNull
+    @Column(name = "descricao")
+    private String descricao;
 
-	public String getNome() {
-		return nome;
-	}
+    @Column(name = "quantidadeEstoque")
+    private int quantidadeEstoque;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Produto() {
 
-	public double getValor() {
-		return valor;
-	}
+    }
 
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
+    public long getCodigoProduto() {
+        return codigoProduto;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public void setCodigoProduto(long codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
 
-	public int getQuantidadeEstoque() {
-		return quantidadeEstoque;
-	}
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
 
-	public void setQuantidadeEstoque(int quantidadeEstoque) {
-		this.quantidadeEstoque = quantidadeEstoque;
-	}
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
 
 }

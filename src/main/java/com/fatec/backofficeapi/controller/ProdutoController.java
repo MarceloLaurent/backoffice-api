@@ -22,43 +22,49 @@ import com.fatec.backofficeapi.service.ProdutoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping(value = "", produces = { "application/json" })
+@RequestMapping(value = "", produces = {"application/json"})
 @Tag(name = "backoffice")
 @CrossOrigin(origins = "*")
 public class ProdutoController {
 
-	@Autowired
-	ProdutoService produtoService;
+    @Autowired
+    ProdutoService produtoService;
 
-	@PostMapping("/produto")
-	public Produto createProduto(@RequestBody Produto produto) {
-		return produtoService.saveProduto(produto);
-	}
+    @PostMapping("/produto")
+    public Produto createProduto(@RequestBody Produto produto) throws Exception {
+        if (produto.getCodigoProduto() <= 0) {
+            throw new Exception("Código do produto inválido");
+        }
+        return produtoService.saveProduto(produto);
+    }
 
-	@GetMapping("/produtos")
-	public List<Produto> getProdutoList(Produto produto) {
-		return produtoService.findAll();
-	}
+    @GetMapping("/produtos")
+    public List<Produto> getProdutoList(Produto produto) {
+        return produtoService.findAll();
+    }
 
-	@GetMapping("/produto/{codigo}")
-	public ResponseEntity<Produto> getProdutoById(@PathVariable("codigo") Long codigo) throws Exception {
-		return ResponseEntity
-				.ok(produtoService.getById(codigo).orElseThrow(() -> new Exception("Produto não encontrado")));
-	}
+    @GetMapping("/produto/{codigo}")
+    public ResponseEntity<Produto> getProdutoById(@PathVariable("codigo") Long codigo) throws Exception {
+        return ResponseEntity
+                .ok(produtoService.getById(codigo).orElseThrow(() -> new Exception("Produto não encontrado")));
+    }
 
-	@PutMapping("/produto")
-	public Produto updateProduto(@RequestBody Produto produto) {
-		return produtoService.updateProduto(produto);
-	}
+    @PutMapping("/produto")
+    public Produto updateProduto(@RequestBody Produto produto) throws Exception {
+        if (produto.getCodigoProduto() <= 0) {
+            throw new Exception("Código do produto inválido");
+        }
+        return produtoService.updateProduto(produto);
+    }
 
-	@DeleteMapping("/produto/{codigo}")
-	public void deleteById(@PathVariable("codigo") Long codigo) {
-		try {
-			produtoService.deleteProduto(codigo);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			Objects.requireNonNull(HttpStatus.NOT_FOUND);
-		}
-	}
+    @DeleteMapping("/produto/{codigo}")
+    public void deleteById(@PathVariable("codigo") Long codigo) {
+        try {
+            produtoService.deleteProduto(codigo);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Objects.requireNonNull(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

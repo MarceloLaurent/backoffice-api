@@ -4,18 +4,22 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "Cliente")
 @Table(name = "cliente")
 public class Cliente {
 
     @Id
+    @NotNull
     @Column(name = "cpf")
     private Long cpf;
 
+    @NotNull
     @Column(name = "nome")
     private String nome;
 
+    @NotNull
     @Column(name = "endereco")
     private String endereco;
 
@@ -25,15 +29,19 @@ public class Cliente {
     @Column(name = "numero")
     private int numero;
 
+    @NotNull
     @Column(name = "cep")
     private String cep;
 
-    @Column(name = "celular")
-    private String celular;
+    @NotNull
+    @Column(name = "contato")
+    private String contato;
 
+    @NotNull
     @Column(name = "email")
     private String email;
 
+    @NotNull
     @Column(name = "senha")
     private String senha;
 
@@ -89,12 +97,12 @@ public class Cliente {
         this.cep = cep;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getContato() {
+        return contato;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setContato(String contato) {
+        this.contato = contato;
     }
 
     public String getEmail() {

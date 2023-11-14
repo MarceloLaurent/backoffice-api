@@ -23,17 +23,20 @@ public class ClienteController {
 
     @Operation(summary = "Adiciona um cliente", method = "POST")
     @PostMapping("/cliente")
-    public Cliente createCliente(@RequestBody Cliente cliente) {
+    public Cliente createCliente(@RequestBody Cliente cliente) throws Exception {
+        if (cliente.getCpf() <= 0) {
+            throw new Exception("CPF inválido");
+        }
         return clienteService.saveCliente(cliente);
     }
 
     @Operation(summary = "Retorna uma lista com todos os clientes", method = "GET")
     @GetMapping("/clientes")
-    public List<Cliente> getClienteList(){
+    public List<Cliente> getClienteList() {
         return clienteService.findAll();
     }
 
-    @Operation(summary = "Retornar um cliente específico", method = "GET")
+    @Operation(summary = "Retorna um cliente específico", method = "GET")
     @GetMapping("/cliente/{cpf}")
     public ResponseEntity<Cliente> getUsuarioById(@PathVariable("cpf") Long cpf) throws Exception {
         return ResponseEntity.ok(clienteService.getById(cpf).orElseThrow(() -> new Exception("Cliente não encontrado")));
@@ -41,7 +44,10 @@ public class ClienteController {
 
     @Operation(summary = "Atualiza os dados de um cliente", method = "PUT")
     @PutMapping("/cliente")
-    public Cliente updateCliente(@RequestBody Cliente cliente) {
+    public Cliente updateCliente(@RequestBody Cliente cliente) throws Exception {
+        if (cliente.getCpf() <= 0) {
+            throw new Exception("CPF inválido");
+        }
         return clienteService.updateCliente(cliente);
     }
 

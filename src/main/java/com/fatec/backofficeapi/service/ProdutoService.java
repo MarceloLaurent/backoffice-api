@@ -12,31 +12,31 @@ import com.fatec.backofficeapi.repository.ProdutoRepository;
 @Service
 public class ProdutoService {
 
-	ProdutoRepository produtoRepository;
+    ProdutoRepository produtoRepository;
 
-	@Autowired
-	public ProdutoService(ProdutoRepository produtoRepository) {
-		this.produtoRepository = produtoRepository;
-	}
+    @Autowired
+    public ProdutoService(ProdutoRepository produtoRepository) {
+        this.produtoRepository = produtoRepository;
+    }
 
-	public Produto saveProduto(Produto produto) {
-		return produtoRepository.save(produto);
-	}
+    public Produto saveProduto(Produto produto) {
+        return produtoRepository.save(produto);
+    }
 
-	public List<Produto> findAll() {
-		return produtoRepository.findAll();
-	}
+    public List<Produto> findAll() {
+        return produtoRepository.findAll();
+    }
 
-	public Optional<Produto> getById(Long codigo) {
-		return produtoRepository.findById(codigo);
-	}
+    public Optional<Produto> getById(Long codigo) {
+        return produtoRepository.findById(codigo);
+    }
 
-	public Produto updateProduto(Produto produto) {
-		return produtoRepository.save(produto);
-	}
+    public Produto updateProduto(Produto produto) {
+        return produtoRepository.save(produto);
+    }
 
-	public void deleteProduto(Long codigo) {
-		produtoRepository.deleteById(codigo);
-	}
+    public void deleteProduto(Long codigo) {
+        produtoRepository.deleteById(codigo);
+    }
 
 }

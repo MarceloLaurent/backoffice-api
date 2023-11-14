@@ -14,19 +14,19 @@ public class ClienteService {
     ClienteRepository clienteRepository;
 
     @Autowired
-    public ClienteService(ClienteRepository clienteRepository){
-        this.clienteRepository=clienteRepository;
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
     }
 
-    public Cliente saveCliente(Cliente cliente){
+    public Cliente saveCliente(Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
-    public List<Cliente> findAll(){
+    public List<Cliente> findAll() {
         return clienteRepository.findAll();
     }
 
-    public Optional<Cliente> getById(Long cpf){
+    public Optional<Cliente> getById(Long cpf) {
         return clienteRepository.findById(cpf);
     }
 

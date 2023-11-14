@@ -4,37 +4,39 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
-@Entity(name="TipoProduto")
-@Table(name="tipoProduto")
+@Entity(name = "TipoProduto")
+@Table(name = "tipoProduto")
 public class TipoProduto {
-		
-		@Id
-		//TODO: mudar o nome da coluna
-		@Column(name="id") 
-		private long id;
-		
-		@Column(name="descricao")
-		private String descricao;
-	
-	public long getId() {
-			return id;
-		}
 
-		public void setId(long id) {
-			this.id = id;
-		}
+    @Id
+    @NotNull
+    @Column(name = "codigo")
+    private long codigo;
 
-		public String getDescricao() {
-			return descricao;
-		}
+    @NotNull
+    @Column(name = "descricao")
+    private String descricao;
 
-		public void setDescricao(String descricao) {
-			this.descricao = descricao;
-		}
+    public long getCodigo() {
+        return codigo;
+    }
 
-	public TipoProduto() {
-		
-	}
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public TipoProduto() {
+
+    }
 
 }
