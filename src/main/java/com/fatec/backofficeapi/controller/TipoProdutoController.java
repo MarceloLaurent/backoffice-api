@@ -47,8 +47,8 @@ public class TipoProdutoController {
     }
 
     @Operation(summary = "Retorna um tipo de produto específico", method = "GET")
-    @GetMapping("/tipoProduto/{id}")
-    public ResponseEntity<TipoProduto> getTipoProdutoById(@PathVariable("id") Long id) throws Exception {
+    @GetMapping("/tipoProduto/{codigo}")
+    public ResponseEntity<TipoProduto> getTipoProdutoById(@PathVariable("codigo") Long id) throws Exception {
         return ResponseEntity.ok(tipoProdutoService.getById(id).orElseThrow(() -> new Exception("Tipo de Produto não encontrado")));
     }
 
@@ -62,8 +62,8 @@ public class TipoProdutoController {
     }
 
     @Operation(summary = "Deleta um tipo de produto específico", method = "DELETE")
-    @DeleteMapping("/tipoProduto/{id}")
-    public void deleteById(@PathVariable("id") Long id) {
+    @DeleteMapping("/tipoProduto/{codigo}")
+    public void deleteById(@PathVariable("codigo") Long id) {
         try {
             tipoProdutoService.deleteTipoProduto(id);
         } catch (Exception e) {

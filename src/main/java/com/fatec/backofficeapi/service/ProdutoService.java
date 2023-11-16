@@ -19,6 +19,8 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
+    //TODO: Adicionar entrada produto em estoque
+    
     public Produto saveProduto(Produto produto) {
         return produtoRepository.save(produto);
     }

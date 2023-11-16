@@ -43,8 +43,8 @@ public class ProdutoController {
         return produtoService.findAll();
     }
 
-    @GetMapping("/produto/{codigo}")
-    public ResponseEntity<Produto> getProdutoById(@PathVariable("codigo") Long codigo) throws Exception {
+    @GetMapping("/produto/{codigoProduto}")
+    public ResponseEntity<Produto> getProdutoById(@PathVariable("codigoProduto") Long codigo) throws Exception {
         return ResponseEntity
                 .ok(produtoService.getById(codigo).orElseThrow(() -> new Exception("Produto não encontrado")));
     }
@@ -57,8 +57,8 @@ public class ProdutoController {
         return produtoService.updateProduto(produto);
     }
 
-    @DeleteMapping("/produto/{codigo}")
-    public void deleteById(@PathVariable("codigo") Long codigo) {
+    @DeleteMapping("/produto/{codigoProduto}")
+    public void deleteById(@PathVariable("codigoProduto") Long codigo) {
         try {
             produtoService.deleteProduto(codigo);
         } catch (Exception e) {
