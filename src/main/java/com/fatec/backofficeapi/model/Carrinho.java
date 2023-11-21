@@ -1,12 +1,14 @@
 package com.fatec.backofficeapi.model;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -22,20 +24,50 @@ public class Carrinho {
 	@Column(name="idCarrinho")
 	private long idCarrinho;
 	
+	@NotNull
 	@OneToOne
-	private Stack<CarrinhoDTO> carrinhoDTO;
+	private Cliente cliente;
+	
+	@OneToMany
+	private List<ItemCarrinho> item = new ArrayList<>();
+	
+	private double valorTotal;
+	
 
-	public Carrinho() {
-		carrinhoDTO = new Stack<>();
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public Stack<CarrinhoDTO> getCarrinhoDTO() {
-		return carrinhoDTO;
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
-	public void setCarrinhoDTO(Stack<CarrinhoDTO> carrinhoDTO) {
-		this.carrinhoDTO = carrinhoDTO;
+
+	public List<ItemCarrinho> getItem() {
+		return item;
 	}
+
+
+	public void setItem(List<ItemCarrinho> item) {
+		this.item = item;
+	}
+
+
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+
+	public void setIdCarrinho(long idCarrinho) {
+		this.idCarrinho = idCarrinho;
+	}
+
 
 	public long getIdCarrinho() {
 		return idCarrinho;

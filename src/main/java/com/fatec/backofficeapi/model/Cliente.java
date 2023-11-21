@@ -47,20 +47,20 @@ public class Cliente {
     private String senha;
     
     @OneToOne
-    private CarrinhoDTO carrinhoDTO;
+    private Carrinho carrinho;
 
+
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
 
 	public Cliente() {
 
     }
-
-    public CarrinhoDTO getCarrinhoDTO() {
-		return carrinhoDTO;
-	}
-
-	public void setCarrinhoDTO(CarrinhoDTO carrinhoDTO) {
-		this.carrinhoDTO = carrinhoDTO;
-	}
 
 	public Long getCpf() {
         return cpf;

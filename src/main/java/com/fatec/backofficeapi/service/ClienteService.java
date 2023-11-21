@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fatec.backofficeapi.model.CarrinhoDTO;
+import com.fatec.backofficeapi.model.Carrinho;
 import com.fatec.backofficeapi.model.Cliente;
 import com.fatec.backofficeapi.repository.ClienteRepository;
 
@@ -40,11 +40,11 @@ public class ClienteService {
         clienteRepository.deleteById(cpf);
     }
     
-    public Optional<CarrinhoDTO> getCarrinhoById(Long cpf) {
+    public Optional<Carrinho> getCarrinhoById(Long cpf) {
     	Optional<Cliente> cliente = clienteRepository.findById(cpf);
     	
     	if (cliente.isPresent()) {
-			return Optional.of(cliente.get().getCarrinhoDTO());
+			return Optional.of(cliente.get().getCarrinho());
 		}
     	
     	return Optional.empty();	
