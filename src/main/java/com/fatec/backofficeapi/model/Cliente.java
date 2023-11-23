@@ -3,6 +3,7 @@ package com.fatec.backofficeapi.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -44,12 +45,24 @@ public class Cliente {
     @NotNull
     @Column(name = "senha")
     private String senha;
+    
+    @OneToOne
+    private Carrinho carrinho;
 
-    public Cliente() {
+
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public Cliente() {
 
     }
 
-    public Long getCpf() {
+	public Long getCpf() {
         return cpf;
     }
 
