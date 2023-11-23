@@ -1,9 +1,11 @@
 package com.fatec.backofficeapi.controller;
 
 import java.util.List;
+import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,13 +38,31 @@ public class CarrinhoController {
 	public String removeItem(Carrinho carrinho, Produto produto) throws Exception {
 		List<ItemCarrinho> itens = carrinho.getItem();
 		if (itens.isEmpty()) {
-			throw new Exception("Produto não encontrado");
+			throw new Exception("O Carrinho esta vazio");
 		}
 		carrinhoService.removeItem(carrinho, produto);
 
 		return "/cliente/carrinho"; 
+	}
+	
+	public void removeQuantidadeProduto(Carrinho carrinho, Produto produto) throws Exception {
+		List<ItemCarrinho> itens = carrinho.getItem();
+		if (itens.isEmpty()) {
+			throw new Exception("O Carrinho esta vazio");
+		}
+		carrinhoService.removeQuantidadeProduto(carrinho, produto);
 		
+	} 
+	@GetMapping("/cliente/carrinho")
+	public Stack<ItemCarrinho> viewCarrinho(Carrinho carrinho){
 		
+		return carrinhoService.viewCarrinho(carrinho);
+		
+	}
+	
+	public Carrinho checkout(Carrinho carrinho) {
+		
+		return carrinhoService.checkout(carrinho);
 	}
 	
 }

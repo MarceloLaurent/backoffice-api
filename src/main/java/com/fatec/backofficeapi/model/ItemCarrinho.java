@@ -24,6 +24,7 @@ public class ItemCarrinho {
 	@ManyToOne
 	@JoinColumn(name = "idCarrinho")
 	private Carrinho carrinho;
+	
 
 	public int getQuantidadeProduto() {
 		return quantidadeProduto;
