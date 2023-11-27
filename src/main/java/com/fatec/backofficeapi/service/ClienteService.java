@@ -1,14 +1,12 @@
 package com.fatec.backofficeapi.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.fatec.backofficeapi.model.Cliente;
+import com.fatec.backofficeapi.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fatec.backofficeapi.model.Carrinho;
-import com.fatec.backofficeapi.model.Cliente;
-import com.fatec.backofficeapi.repository.ClienteRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -38,15 +36,5 @@ public class ClienteService {
 
     public void deleteCliente(Long cpf) {
         clienteRepository.deleteById(cpf);
-    }
-    
-    public Optional<Carrinho> getCarrinhoById(Long cpf) {
-    	Optional<Cliente> cliente = clienteRepository.findById(cpf);
-    	
-    	if (cliente.isPresent()) {
-			return Optional.of(cliente.get().getCarrinho());
-		}
-    	
-    	return Optional.empty();	
     }
 }

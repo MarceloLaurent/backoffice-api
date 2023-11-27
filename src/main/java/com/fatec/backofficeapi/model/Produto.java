@@ -1,28 +1,24 @@
 package com.fatec.backofficeapi.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
-@Entity(name = "Produto")
+@Entity
 @Table(name = "produto")
 public class Produto {
 
     @Id
-    @NotNull
     @Column(name = "codigoProduto")
     private long codigoProduto;
-    @NotNull
-    @ManyToOne
-    private TipoProduto tipoProduto;
 
-    @NotNull
+    @Column(name = "tipoProduto")
+    private String tipoProduto;
+
     @Column(name = "nome")
     private String nome;
 
     @Column(name = "valor")
     private double valor;
 
-    @NotNull
     @Column(name = "descricao")
     private String descricao;
 
@@ -41,11 +37,11 @@ public class Produto {
         this.codigoProduto = codigoProduto;
     }
 
-    public TipoProduto getTipoProduto() {
+    public String getTipoProduto() {
         return tipoProduto;
     }
 
-    public void setTipoProduto(TipoProduto tipoProduto) {
+    public void setTipoProduto(String tipoProduto) {
         this.tipoProduto = tipoProduto;
     }
 

@@ -4,18 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
-@Entity(name = "TipoProduto")
+@Entity
 @Table(name = "tipoProduto")
 public class TipoProduto {
 
     @Id
-    @NotNull
     @Column(name = "codigo")
     private long codigo;
 
-    @NotNull
     @Column(name = "descricao")
     private String descricao;
 

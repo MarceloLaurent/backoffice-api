@@ -3,24 +3,19 @@ package com.fatec.backofficeapi.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
-@Entity(name = "Cliente")
+@Entity
 @Table(name = "cliente")
 public class Cliente {
 
     @Id
-    @NotNull
     @Column(name = "cpf")
     private Long cpf;
 
-    @NotNull
     @Column(name = "nome")
     private String nome;
 
-    @NotNull
     @Column(name = "endereco")
     private String endereco;
 
@@ -30,39 +25,23 @@ public class Cliente {
     @Column(name = "numero")
     private int numero;
 
-    @NotNull
     @Column(name = "cep")
     private String cep;
 
-    @NotNull
     @Column(name = "contato")
     private String contato;
 
-    @NotNull
     @Column(name = "email")
     private String email;
 
-    @NotNull
     @Column(name = "senha")
     private String senha;
-    
-    @OneToOne
-    private Carrinho carrinho;
 
-
-	public Carrinho getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(Carrinho carrinho) {
-		this.carrinho = carrinho;
-	}
-
-	public Cliente() {
+    public Cliente() {
 
     }
 
-	public Long getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
@@ -133,4 +112,5 @@ public class Cliente {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }
